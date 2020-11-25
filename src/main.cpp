@@ -13,7 +13,7 @@ auto print_ip(const T& someIntType)
 -> std::enable_if_t<std::is_integral<T>::value>
 {
 	const uint8_t* val_lsb = reinterpret_cast<const uint8_t*>(&someIntType) + sizeof(someIntType) - 1; // pointer to the lsb
-	for (auto it = 0; it < sizeof(someIntType); ++it) {
+	for (size_t it = 0; it < sizeof(someIntType); ++it) {
 		if (it != 0) {
 			std::cout << ".";
 		}

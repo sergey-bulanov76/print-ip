@@ -33,7 +33,7 @@ if (MSVC)
 
 	target_compile_options(
 		print_ip PRIVATE
-		/W4
+		/WX
 	)
 else ()
 	target_compile_options(

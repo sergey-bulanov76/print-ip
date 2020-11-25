@@ -8,22 +8,12 @@
 
 #include "is_stl_container.h"
 
-template <class Tp>
-std::size_t tuple_size(Tp t) {
-	return std::tuple_size<Tp>::value;
-}
-
-template <typename T1, typename... T2>
-constexpr bool check_for_type(std::tuple<T2...>) {
-	return std::disjunction_v<std::is_same<T1, T2>...>;
-}
-
 template <typename T> // integral types
 auto print_ip(const T& someIntType)
 -> std::enable_if_t<std::is_integral<T>::value>
 {
 	const uint8_t* val_lsb = reinterpret_cast<const uint8_t*>(&someIntType) + sizeof(someIntType) - 1; // pointer to the lsb
-	for (auto it = 0; it < sizeof(someIntType); ++it) {
+	for (size_t it = 0; it < sizeof(someIntType); ++it) {
 		if (it != 0) {
 			std::cout << ".";
 		}
@@ -115,52 +105,23 @@ constexpr bool checkType1(std::tuple<Ts...>& tup) {
 	}
 }
 
-
 int main() {
 	std::vector<int> v{ 46, 45, 44, 43, 42 };
-	std::tuple<int, int, int, int, int> t{ 48, 49, 50, 51, 52 };
-	std::tuple<int, std::string, int, int> t1{ 48, "trololo", 50, 51 };
-	std::tuple<int, int, int, int, int64_t> t2{ 48, 49, 50, 51, 52 };
 	std::list<int> l = { 52, 53, 54, 55 };
 	std::string s{ "trololo" };
-	int16_t foo{ -1 };
-	uint64_t foo1{ 0xFF'FF'FD'FD'FB'FA'FF'09 };
-	uint32_t foo2{ 0xFF'FE'FD'FC };
-	auto foo3 = char(-1);
-	auto foo4 = short(0);
-	auto foo5 = int(2130706433);
-	auto foo6 = long(8875824491850138409);
 
-
-	std::cout << foo << " as ";
-	print_ip(foo);
-	std::cout << foo1 << " as ";
-	print_ip(foo1);
-	std::cout << foo2 << " as ";
-	print_ip(foo2);
-	//std::cout << foo3 << " as ";
-	//print_ip(foo3);
-
+	std::cout << "char(-1) as ";
+	print_ip(char(-1));
+	std::cout << "short(0) as ";
+	print_ip(short(0));
+	std::cout << "int(2130706433) as ";
+	print_ip(int(2130706433));
+	std::cout << "uint64_t(8875824491850138409) as ";
+	print_ip(uint64_t(8875824491850138409));
+	std::cout << "string as ";
+	print_ip(s);
 	std::cout << "vector as ";
 	print_ip(v);
 	std::cout << "list as ";
 	print_ip(l);
-	std::cout << "string as ";
-	print_ip(s);
-	std::cout << "tuple as ";
-	// print_ip(t);
-	std::cout << "tuple t" << std::endl;
-	printTuple(t);
-	std::cout << checkType1(t) << std::endl;
-	std::cout << "tuple t1" << std::endl;
-	printTuple(t1);
-	std::cout << checkType1(t1) << std::endl;
-	std::cout << "tuple t2" << std::endl;
-	printTuple(t2);
-	std::cout << checkType1(t2) << std::endl;
-
-	// std::apply([](auto&&... args) {((std::cout << args << '.'), ...); }, t); print tuple
-	// std::tuple_element<0, decltype(t)>::type first = std::get<0>(t);
-	std::tuple_element<0, decltype(t)>::type x;
-	std::cout << typeid(x).name() << std::endl;
 }

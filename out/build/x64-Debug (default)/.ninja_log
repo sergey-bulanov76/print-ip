@@ -1,0 +1,14 @@
+# ninja log v5
+0	7	0	clean	9992afb1f91dc381
+1	904	627895481	CMakeFiles/print_ip.dir/src/main.cpp.obj	f07d70f412e95cd
+904	1701	627895482	print_ip.exe	9bbdbb567570c0ca
+0	617	627895858	CMakeFiles/print_ip.dir/src/main.cpp.obj	f07d70f412e95cd
+617	804	627895859	print_ip.exe	9bbdbb567570c0ca
+1	415	627895884	CMakeFiles/print_ip.dir/src/main.cpp.obj	f07d70f412e95cd
+415	569	627895884	print_ip.exe	9bbdbb567570c0ca
+0	458	627896049	CMakeFiles/print_ip.dir/src/main.cpp.obj	f07d70f412e95cd
+458	616	627896049	print_ip.exe	9bbdbb567570c0ca
+0	459	627896136	CMakeFiles/print_ip.dir/src/main.cpp.obj	f07d70f412e95cd
+459	634	627896136	print_ip.exe	9bbdbb567570c0ca
+0	547	627896180	CMakeFiles/print_ip.dir/src/main.cpp.obj	f07d70f412e95cd
+548	723	627896180	print_ip.exe	9bbdbb567570c0ca
